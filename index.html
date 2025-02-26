@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frases Motivacionais</title>
+    <link rel="stylesheet" href="src/estilis.css">
+    <link rel="stylesheet" href="src/script.js">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a class="a-1" href="project.html">Sim ou Não</a>
+            </li>
+        </ul>
+    </nav>
+    <h1 class="title">Clique e Gere sua Frase!</h1>
+    <div class="Clique">
+        <h2 id="frase">Clique!</h2>
+        <button id="botao" class="my-button" onclick="sortearFrase()">Sortear Frase</button>
+    </button>
+</div>
+
+<script>
+    const frases = [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+    ];
+
+    function sortearFrase() {
+        const indice = Math.floor(Math.random() * frases.length);
+        document.getElementById("frase").textContent = frases[indice];
+    }
+</script>
+
+<audio id="audio" src="som/depositphotos_412296436-track-light-switch-click-switching-lights.mp3"></audio>
+<script>
+    // Seleciona o botão e o áudio
+    const botao = document.getElementById("botao");
+    const audio = document.getElementById("audio");
+
+    // Adiciona o evento de clique ao botão
+    botao.addEventListener("click", () => {
+        // Reseta o áudio para o início
+        audio.currentTime = 0;
+
+        // Reproduz o áudio
+        audio.play();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sim ou Não</title>
+    <link rel="stylesheet" href="src/simounao.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a class="a-1" href="index.html">voltar</a>
+            </li>
+        </ul>
+    </nav>
+    <h1 class="h1-1">Clique no botão para sortear o Sim ou Não!</h1>
+    <div class="interface">
+        <h2 class="h2-2" id="frase">Clique!</h2>
+        <button id="botao" class="btn-meu" onclick="sortearFrase()">Sortear Sim ou Não
+            
+        </button>
+    </button>
+    </div>
+    <p class="p1" id="total-cliques">Número de Cliques Total: 0<p>
+    <p class="p2" id="total-sim">Número de Sim Total: 0</p>
+    <p class="p3" id="total-nao">Número de Não Total: 0</p>
+
+    <script>
+        const frases = [
+            "Sim",
+            "Não",
+        ];
+
+        // Inicializa os contadores
+        let totalCliques = 0;
+        let totalSim = 0;
+        let totalNao = 0;
+
+        // Função para sortear e mostrar a frase
+        function sortearFrase() {
+            // Sorteia uma frase aleatória
+            const indice = Math.floor(Math.random() * frases.length);
+            const fraseSorteada = frases[indice];
+
+            // Exibe a frase sorteada
+            document.getElementById("frase").textContent = fraseSorteada;
+
+            // Incrementa o total de cliques
+            totalCliques++;
+
+            // Atualiza o contador de "Sim" ou "Não"
+            if (fraseSorteada === "Sim") {
+                totalSim++;
+            } else if (fraseSorteada === "Não") {
+                totalNao++;
+            }
+
+            // Atualiza as exibições dos totais
+            atualizarExibicao();
+        }
+
+        // Função para atualizar a exibição dos totais
+        function atualizarExibicao() {
+            document.getElementById("total-cliques").textContent = `Total de cliques: ${totalCliques}`;
+            document.getElementById("total-sim").textContent = `Total de "Sim": ${totalSim}`;
+            document.getElementById("total-nao").textContent = `Total de "Não": ${totalNao}`;
+        }
+    </script>
+
+<audio id="audio" src="som/depositphotos_412296436-track-light-switch-click-switching-lights.mp3"></audio>
+<script>
+    // Seleciona o botão e o áudio
+    const botao = document.getElementById("botao");
+    const audio = document.getElementById("audio");
+
+    // Adiciona o evento de clique ao botão
+    botao.addEventListener("click", () => {
+        // Reseta o áudio para o início
+        audio.currentTime = 0;
+
+        // Reproduz o áudio
+        audio.play();
+    });
+</script>
+
+</body>
+</html>
